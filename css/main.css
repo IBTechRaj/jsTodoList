@@ -1,0 +1,337 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+}
+.project-list-container, .todo-items-container {
+  float: left;
+}
+
+.project-list-container {
+  background-color: #F2F5F7;
+  width: 25%;
+  height: 100vh;
+  padding: 50px 40px;
+  color: black;
+  font-size: 2rem;
+  /* font-weight: normal; */
+}
+
+.todo-items-container {
+  background-color: #fff;
+  color: #444;
+  width: 75%;
+  height: 100vh;
+  padding-top: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.project-list-container h1 {
+  font-size: 2.7rem;
+  margin-right: 30px;
+  float: left;
+}
+
+.project-list-container button {
+  background-color: inherit;
+  color: #000; 
+  border: 0;
+   font-size: 1.5rem; 
+  padding: 0;
+  cursor: pointer;
+}
+
+.project-list-container ul {
+  margin-top: 20px;
+}
+
+.project-list-container ul li:hover {
+  background-color: #fff;
+  color: #444;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.todo-items-container h1 {
+  font-size: 2.7rem;
+  margin-bottom: 40px;
+  color: #444;
+}
+
+.todo-items-container ul {
+  border: 3px solid #444;
+}
+
+.todo-items-container li {
+  display: flex;
+  border-bottom: 3px solid #444;
+  font-size: 1.5rem;
+}
+
+.todo-items-container li:last-child {
+  border-bottom: 0;
+}
+
+.todo-items-container li {
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.todo-items-container li > strong { padding: 0 10px; }
+
+form {
+  padding: 10px;
+  background-color: #F2F5F7;
+  color: blue;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20px;
+  left: 30%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+label {
+  font-size: 2rem;
+  text-align: center;
+  color: black;
+}
+
+div > label {
+  font-size: 1.5rem;
+}
+
+input {
+  font-size: 1.3rem;
+  padding: 10px 7px;
+  margin: 20px 0;
+}
+
+textarea {
+  font-size: 1.3rem;
+  padding: 10px 5px;
+  margin: 5px 0;
+}
+
+[type="submit"] {
+  font-size: 1.3rem;
+  padding: 10px;
+  border: 0;
+  margin-top: 5px;
+  background-color: #fff;
+}
+
+#project-cancel-btn, #todo-cancel-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: url("icons/cancel.png") no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+#new-project-btn {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+#new-todo-btn {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  float: right;
+}
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.selected {
+  /* background-color: #fff; */
+  font-size: 4 rem;
+  font-weight: 600;
+  color: #444;
+}
+
+#new-todo-btn1 {
+  font-size: 1.7rem;
+  padding: 5px 50px;
+  border: 0;
+  background-color: #444;
+  color: #fff;
+  float: right;
+}
+
+#project-name-heading {
+  float: left;
+}
+td{
+    font-size: 1.4rem;
+    padding-left: 1rem; 
+    width: auto;
+}
+table {
+table-layout: fixed;
+width: 100%;
+border: 1px solid red;
+}
+/** Project Display **/
+
+
+/* .add-project {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+.add-project input {
+  font-weight: bold;
+}
+
+.projects {
+  margin: 15px 0;
+}
+ */
+
+ /***** from other program  ****/
+
+ :root {
+  --mainWhite: #f5f5f5;
+  --mainGreen: #80cfa9;
+  --mainBlack: #333333;
+  --mainRed: #d62828;
+  --mainBlue: #11b5e4;
+}
+ .form-control {
+  border-color: var(--mainGreen) !important;
+}
+
+.feedback {
+  display: none;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.item-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.complete-item {
+  color: var(--mainGreen);
+}
+.complete-item:hover {
+  color: var(--mainGreen);
+}
+.edit-item {
+  color: var(--mainBlue);
+}
+.edit-item:hover {
+  color: var(--mainBlue);
+}
+.delete-item {
+  color: var(--mainRed);
+}
+.delete-item:hover {
+  color: var(--mainRed);
+}
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.visibility {
+  opacity: 0.5;
+}
+.showItem {
+  display: block;
+}
+
+
+/* popup forms  */
+#form {
+      /* display: none; Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      /* Fix the button on the left side of the page */
+      .open-btn {
+      display: flex;
+      justify-content: left;
+      }
+      /* Style and fix the button on the page */
+      .open-button {
+      background-color: #1c87c9;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+      }
+      /* Hide the Popup form */
+      .form-popup {
+      border: 2px solid #666;
+      z-index: 9;
+      max-width: 300px;
+      margin: 0 auto;
+      }
+      /* Styles for the form container */
+      .form-container {
+      max-width: 300px;
+      padding: 5px;
+      background-color: #fff;
+      }
+      /* Full-width for input fields */
+      .form-container input[type=text], .form-container input[type=password] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #eee;
+      }
+      /* When the inputs get focus, do something */
+      .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+      }
+      /* Style submit/login button */
+      .form-container .btn {
+      background-color: #8ebf42;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom:10px;
+      opacity: 0.8;
+      }
+      /* Style cancel button */
+      .form-container .cancel {
+      background-color: #cc0000;
+      }
+      /* Hover effects for buttons */
+      .form-container .btn:hover, .open-button:hover {
+      opacity: 1;
+      }
