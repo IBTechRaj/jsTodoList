@@ -317,7 +317,7 @@ class LocalStorage {
     static addTodo(project) {
          const projs = LocalStorage.getProjects();
          projs.forEach(function (proj){
-             if (proj.ptitle === project.ptitle)
+             if (proj === project)
              proj.addToDoItem(toDoItem(todoTitle, todoDescription, todoPriority, todoDueDate));
 
          });
