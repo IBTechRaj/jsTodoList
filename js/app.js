@@ -316,10 +316,15 @@ class LocalStorage {
     }
     static addTodo(project) {
          const projs = LocalStorage.getProjects();
+         console.log(project);
+        //  console.log(project.toDoItem.title);
          projs.forEach(function (proj){
-             if (proj === project)
-             proj.addToDoItem(toDoItem(todoTitle, todoDescription, todoPriority, todoDueDate));
-
+             if (proj.ptitle === project.ptitle){
+                 //console.log(todoTitle);
+                // proj.addToDoItem(project.toDoItem(title, description, priority, dueDate));
+                // defaultProject.addToDoItem(toDoItem("Buy Milk", "Buy Milk from store", "Urgent", "16/5/2020"));
+                proj.toDoItems.push(project.toDoItem);
+             }
          });
         localStorage.setItem('projs', JSON.stringify(projs));
     }
