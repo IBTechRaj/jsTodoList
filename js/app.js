@@ -267,6 +267,7 @@ function handleItem(todoItem, project) {
             // edit event listener
             item.querySelector(".edit-item").addEventListener("click", () => {
                console.log(project );
+               LocalStorage.delEdTodo(project, todoItem.title);
                      console.log(project, todoItem.title);
                     LocalStorage.deleteTodo(project, todoItem.title);
                     itemList.removeChild(item);
@@ -282,6 +283,8 @@ function handleItem(todoItem, project) {
 
             item.querySelector(".delete-item").addEventListener("click", function () {
                 itemList.removeChild(item);
+                LocalStorage.delEdTodo(project, todoItem.title);
+                 LocalStorage.deleteTodo(project, todoItem.title);
                 showFeedback("item deleted", "success");
 
             });
@@ -338,6 +341,27 @@ class LocalStorage {
              }
          });
         localStorage.setItem('projs', JSON.stringify(projs));
+    }
+
+static delEdTodo(project, dtitle) {
+         const projs = LocalStorage.getProjects();
+         
+        //  projs.forEach(function (proj){
+        //      console.log(dtitle + " " + project.ptitle);
+        //      console.log(proj);
+             
+        //      if (proj.ptitle === project.ptitle)
+                 
+                 
+                 project.toDoItems.forEach(function (todo_item,index){
+                     if (todo_item.title === dtitle){
+                         console.log(todo_item.title +": " +dtitle);
+                         project.toDoItems.splice(index, 1);
+                     }
+                 });   
+             
+        //  });
+        // localStorage.setItem('projs', JSON.stringify(projs));
     }
 
     static deleteTodo(project, dtitle) {
