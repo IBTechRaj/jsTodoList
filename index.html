@@ -32,15 +32,7 @@
 
     <!-- </div> -->
     <!-- <div id="right-section"> -->
-    <!-- <div class="proj-info">
-        <div class="body-header">
-            <h1 class="proj-header">Daily List</h1>
-            <input type="button" value="Add ToDo" class="addToDoBTN">
-        </div>
-        <p>Description: <span class="proj-desc"></span></p>
-        <p>Date Due: <span class="proj-dueDate"></span></p>
-        <p>Priority: <span class="proj-prio"></span></p>
-    </div> -->
+
     <div class="todo-items-container">
         <div class="alert text-capitalize feedback">
             write value for item
@@ -84,143 +76,14 @@
             <input type="text" id="todo-title" placeholder="Enter Title">
             <textarea name="" id="todo-description" placeholder="Enter Description"></textarea>
             <select id="prio-select" class="proj-form-prio">
-                <option value="base">Priority</option>
-                <option value="high">Urgent</option>
-                <option value="low">Ordinary</option>
+                <option selected>Urgent</option>
+                <option>Ordinary</option>
             </select>
             <input id="todo-due-date" onfocus="(this.type='date')" onblur="(this.type='text')"
                 placeholder="Enter Due Date">
-
-            <!-- <div>
-                <label>Is Urgent?</label>
-                <input type="checkbox" id="importance">
-            </div> -->
-
             <input type="submit" value="Add To Do" style="background-color: #A4CB67">
         </form>
     </div>
-    <!-- <div class="new-project-form-container hidden"></div> -->
-    <!-- <div id="new-project-form"> -->
-    <!-- <div class="form-popup" id="popupForm"> -->
-    <!-- <form id="new-project-form">
-        <h2>Please Log in</h2>
-        <label for="email">
-            <strong>E-mail</strong>
-        </label>
-        <input type="text" id="email" placeholder="Your Email" name="email" required>
-        <label for="psw">
-            <strong>Password</strong>
-        </label>
-        <input type="password" id="psw" placeholder="Your Password" name="psw" required>
-        <button type="submit" class="btn">Log in</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
-    </div> -->
-    <!-- </div>
-    </div> -->
-    <!-- </div> -->
-    <!-- <div class="new-todo-form-container hidden"></div>
-                                    <form id="item-form" class="my-3 ">
-                                        <h3 class="text-capitalize mb-4">to do list...</h3>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control text-capitalize" id="itemInput" placeholder="name...">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-green text-capitalize" type="submit">add item.....</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    </div> -->
-    <!-- <div class="item-container"> -->
-    <!-- end of form  -->
-
-    <!-- <header>TodoList</header> -->
-    <!-- <div id="left-section">
-        <div class="projects">
-            <div class="add-project">Add Project
-                <input type="button" value="+" class="addProjectBTN">
-
-            </div>
-        </div>
-    </div>
-    <div id="right-section">
-        <div class="proj-info">
-            <div class="body-header">
-                <h1 class="proj-header">Daily List</h1>
-                <input type="button" value="Add ToDo" class="addToDoBTN">
-            </div>
-            <p>Description: <span class="proj-desc"></span></p>
-            <p>Date Due: <span class="proj-dueDate"></span></p>
-            <p>Priority: <span class="proj-prio"></span></p>
-        </div>
-    </div> -->
-
-    <!--HIDDEN FORMS-->
-    <!-- <div class="add-project-form hidden">
-        <form id="project-form">
-            <h1 class="project-header">Add Project</h1>
-            <input type="text" placeholder="Project Name" class="proj-form-name">
-            <input type="text" placeholder="Project Description" class="proj-form-desc">
-            <div class="date-prio">
-                <div class="dueDate">
-                    <span>Due Date:</span>
-                    <input type="date" name="dueDate" value="" class="proj-form-date">
-                </div>
-                <select id="prio-select" class="proj-form-prio">
-                    <option value="base" selected>Priority</option>
-                    <option value="low">Low</option>
-                    <option value="med">Medium</option>
-                    <option value="high">High</option>
-                </select>
-            </div>
-            <input type="button" class="add-project-button" value="Add">
-        </form>
-    </div>
- -->
-
-
-
-    <!-- <div class="container">
-                        <div class="row">
-                            <div class="col mx-auto col-md-8 mt-3 text-center">
-                                <div class="alert text-capitalize feedback">
-                                    write value for item
-                                </div>
-                                
-                                <form id="itemForm" class="my-3">
-                                    <h3 class="text-capitalize mb-4">to do list</h3>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control text-capitalize" id="itemInput" placeholder="name...">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-green text-capitalize" type="submit">add item</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="item-container">
-                                    
-                                    <div class="item-list my-5"> -->
-    <!-- single item -->
-    <!-- <div class="item my-3">
-                    <h5 class="item-name text-capitalize">laundry</h5>
-                    <div class="item-icons">
-                    <a href="#" class="complete-item mx-2 item-icon"><i class="far fa-check-circle"></i></a>
-                    <a href="#" class="edit-item mx-2 item-icon"><i class="far fa-edit"></i></a>
-                    <a href="#" class="delete-item item-icon"><i class="far fa-times-circle"></i></a>
-                    </div>
-                    </div> -->
-    <!-- end of single item -->
-    <!-- </div>
-                                    <button type="button" class="btn btn-green my-3 text-capitalize" id="clear-list">clear
-                                        items</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-
-
-
-
     <!-- script js -->
     <script src="js/app.js"></script>
 </body>
