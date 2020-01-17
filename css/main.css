@@ -245,6 +245,10 @@ border: 1px solid red;
 .delete-item {
   color: var(--mainRed);
 }
+.del-proj {
+  float: right;
+  padding-top: 10px;
+}
 .delete-item:hover {
   color: var(--mainRed);
 }

@@ -1,4 +1,4 @@
-/***** My Local Storage */
+/*****  Local Storage */
 
 class LocalStorage {
     static addProject(project) {
@@ -62,22 +62,17 @@ class LocalStorage {
 
 
         const projs = LocalStorage.getProjects();
-        let firstProj = '';
         if (projs.length === 0) {
             let defaultProject = project("Sample");
-            firstProj = defaultProject;
             projects.push(defaultProject);
-            defaultProject.addToDoItem(toDoItem("Buy Milk", "Buy Milk from store", "Urgent", "16/5/2020"));
-            defaultProject.addToDoItem(toDoItem("Buy Cheese slices", "Buy Cheese from hotel", "Ordinary", "16/5/2019"));
+            defaultProject.toDoItems.push(toDoItem("Buy Milk", "Buy Milk from store", "Urgent", "16/5/2020"));
+            defaultProject.toDoItems.push(toDoItem("Buy Cheese slices", "Buy Cheese from hotel", "Ordinary", "16/5/2019"));
 
             LocalStorage.addProject(defaultProject);
             renderToDoList(defaultProject, defaultProject.toDoItems);
         }
 
 
-        // let defaultProject = project("Sample");
-        //  renderToDoList(firstProj, firstProj.toDoItems);
-        // renderProjectName("Sample");
         projects = [];
         const prs = LocalStorage.getProjects();
         prs.forEach(function (pr) {
@@ -88,189 +83,19 @@ class LocalStorage {
         addEventListenerToProjectItem();
         renderProjectName(prs[0].ptitle);
         renderToDoList(prs[0], prs[0].toDoItems);
-
-        // const defaultProjectElement = document.querySelector("#project-list li");
-        // defaultProjectElement.classList.add("selected");
-
     }
 
 }
-
-
-/********************* Event Listeners **************/
-
-const addNewProjectBtn = document.querySelector("#new-project-btn");
-
-addNewProjectBtn.addEventListener("click", () => {
-    const formContainer = document.querySelector(".new-project-form-container");
-    formContainer.classList.remove("hidden");
-    formContainer.classList.add("show");
-});
-
-const newProjectForm = document.querySelector("#new-project-form");
-
-newProjectForm.addEventListener("submit", (e) => {
-    const projectName = document.querySelector("#project-name").value;
-    defaultProject = project(projectName);
-    projects.push(defaultProject);
-
-    LocalStorage.addProject(defaultProject);
-
-    renderProjectsList();
-    addEventListenerToProjectItem();
-
-    const formContainer = document.querySelector(".new-project-form-container");
-    formContainer.classList.remove("show");
-    formContainer.classList.add("hidden");
-    e.preventDefault();
-});
-
-
-function addEventListenerToProjectItem() {
-    const projectList = document.querySelectorAll("#project-list > li");
-
-    for (let i = 0; i < projectList.length; i++) {
-        projectList[i].addEventListener("click", (e) => {
-            renderProjectName(e.target.innerText);
-
-            for (let i = 0; i < projectList.length; i++) {
-                if (projectList[i].classList.contains("selected")) {
-                    projectList[i].classList.remove("selected");
-                }
-            }
-
-            e.target.classList.add("selected");
-
-            let project = projects[e.target.id - 1];
-
-            renderToDoList(project, project.toDoItems);
-        });
-    }
-}
-
-
-const addNewTodoBtn = document.querySelector("#new-todo-btn");
-
-addNewTodoBtn.addEventListener("click", () => {
-    const formTodoContainer = document.querySelector(".new-todo-form-container");
-    formTodoContainer.classList.remove("hidden");
-    formTodoContainer.classList.add("show");
-});
-
-const newTodoForm = document.querySelector("#new-todo-form");
-
-newTodoForm.addEventListener("submit", (e) => {
-    const todoTitle = document.querySelector("#todo-title").value;
-    const todoDescription = document.querySelector("#todo-description").value;
-    const todoDueDate = document.querySelector("#todo-due-date").value;
-    const em = document.getElementById("prio-select");
-    const todoPriority = em.options[em.selectedIndex].text;
-
-    let selectedProjectElement = document.querySelector(".selected");
-
-
-    if (selectedProjectElement) {
-        let project = projects[selectedProjectElement.id - 1];
-        project.addToDoItem(toDoItem(todoTitle, todoDescription, todoPriority, todoDueDate));
-        console.log(project.toDoItems);
-        LocalStorage.addTodo(project);
-        renderToDoList(project, project.toDoItems);
-    }
-
-    const formContainer = document.querySelector(".new-todo-form-container");
-    formContainer.classList.remove("show");
-    formContainer.classList.add("hidden");
-    e.preventDefault();
-});
-
-
-
-
-
-
-
-/******** Helper methods *******/
-
-
-function handleItem(todoItem, project) {
-    const items = itemList.querySelectorAll(".item");
-    items.forEach(function (item) {
-        if (item.querySelector(".item-name").textContent === todoItem.title) {
-            // complete event listener
-            item
-                .querySelector(".complete-item")
-                .addEventListener("click", function () {
-                    item.querySelector(".item-name").classList.toggle("completed");
-                    this.classList.toggle("visibility");
-                });
-            // edit event listener
-            item.querySelector(".edit-item").addEventListener("click", () => {
-                console.log(project);
-                LocalStorage.delEdTodo(project, todoItem.title);
-                console.log(project, todoItem.title);
-                LocalStorage.deleteTodo(project, todoItem.title);
-                itemList.removeChild(item);
-                const formTodoContainer = document.querySelector(".new-todo-form-container");
-                formTodoContainer.classList.remove("hidden");
-                formTodoContainer.classList.add("show");
-                document.querySelector("#todo-title").value = todoItem.title;
-                document.querySelector("#todo-description").value = todoItem.description;
-                document.querySelector("#prio-select").value = todoItem.priority;
-                document.querySelector("#todo-due-date").value = todoItem.dueDate;
-
-            });
-            // delete event listener
-            item.querySelector(".delete-item").addEventListener("click", function () {
-                itemList.removeChild(item);
-                LocalStorage.delEdTodo(project, todoItem.title);
-                LocalStorage.deleteTodo(project, todoItem.title);
-                showFeedback("item deleted", "success");
-
-            });
-        }
-    });
-}
-
-function showFeedback(text, action) {
-    feedback.classList.add("showItem", `alert-${action}`);
-    feedback.innerHTML = `<p>${text}</p>`;
-
-    setTimeout(function () {
-        feedback.classList.remove("showItem", `alert-${action}`);
-    }, 3000);
-}
-
-
-
-function renderProjectName(name) {
-    const projectName = document.querySelector("#project-name-heading");
-    projectName.innerHTML = name;
-}
-
-window.addEventListener('load', LocalStorage.renderSample);
-
-window.onerror = function (msg, url, lineNo, columnNo, error) {
-    // ... handle error ...
-    this.console.log(msg);
-
-    return false;
-}
-
 
 
 const itemList = document.querySelector(".item-list");
 const feedback = document.querySelector(".feedback");
 
-let projects = [];
-
+let projects = LocalStorage.getProjects() || [];
+console.log(projects);
 const project = (ptitle) => {
     let toDoItems = [];
-
-    const addToDoItem = (toDoItem) => {
-        toDoItems.push(toDoItem);
-    }
-
-    return { ptitle, toDoItems, addToDoItem };
+    return { ptitle, toDoItems };
 }
 
 
@@ -345,12 +170,158 @@ function renderToDoList(project, toDoItems) {
     }
 }
 
-/******** notes
- * added line below(1) - l.277
- * const projects=LocalStorage.getProjects(); to display proj list on loading
- *
- * added below to display default proj todo items(2) - l.82-83
- * const prs = LocalStorage.getProjects();
-*      renderToDoList(prs[0], prs[0].toDoItems);
 
- */
+/********************* Event Listeners **************/
+
+const addNewProjectBtn = document.querySelector("#new-project-btn");
+
+addNewProjectBtn.addEventListener("click", () => {
+    const formContainer = document.querySelector(".new-project-form-container");
+    formContainer.classList.remove("hidden");
+    formContainer.classList.add("show");
+});
+
+const newProjectForm = document.querySelector("#new-project-form");
+
+newProjectForm.addEventListener("submit", (e) => {
+    const projectName = document.querySelector("#project-name").value;
+    defaultProject = project(projectName);
+    projects.push(defaultProject);
+
+    LocalStorage.addProject(defaultProject);
+
+    renderProjectsList();
+    addEventListenerToProjectItem();
+
+    const formContainer = document.querySelector(".new-project-form-container");
+    formContainer.classList.remove("show");
+    formContainer.classList.add("hidden");
+    e.preventDefault();
+});
+
+
+function addEventListenerToProjectItem() {
+    const projectList = document.querySelectorAll("#project-list > li");
+
+    for (let i = 0; i < projectList.length; i++) {
+        projectList[i].addEventListener("click", (e) => {
+            renderProjectName(e.target.innerText);
+
+            for (let i = 0; i < projectList.length; i++) {
+                if (projectList[i].classList.contains("selected")) {
+                    projectList[i].classList.remove("selected");
+                }
+            }
+
+            e.target.classList.add("selected");
+
+            let project = projects[e.target.id - 1];
+
+            renderToDoList(project, project.toDoItems);
+        });
+    }
+}
+
+
+const addNewTodoBtn = document.querySelector("#new-todo-btn");
+
+addNewTodoBtn.addEventListener("click", () => {
+    const formTodoContainer = document.querySelector(".new-todo-form-container");
+    formTodoContainer.classList.remove("hidden");
+    formTodoContainer.classList.add("show");
+});
+
+const newTodoForm = document.querySelector("#new-todo-form");
+
+newTodoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const todoTitle = document.querySelector("#todo-title").value;
+    const todoDescription = document.querySelector("#todo-description").value;
+    const todoDueDate = document.querySelector("#todo-due-date").value;
+    const em = document.getElementById("prio-select");
+    const todoPriority = em.options[em.selectedIndex].text;
+
+    let selectedProjectElement = document.querySelector(".selected");
+    console.log(selectedProjectElement)
+
+    if (selectedProjectElement) {
+        let project = projects[selectedProjectElement.id - 1];
+        console.log(project)
+        project.toDoItems.push(toDoItem(todoTitle, todoDescription, todoPriority, todoDueDate));
+        console.log(project.toDoItems);
+        LocalStorage.addTodo(project);
+        renderToDoList(project, project.toDoItems);
+    }
+
+    const formContainer = document.querySelector(".new-todo-form-container");
+    formContainer.classList.remove("show");
+    formContainer.classList.add("hidden");
+});
+
+
+/******** Helper methods *******/
+
+function handleItem(todoItem, project) {
+    const items = itemList.querySelectorAll(".item");
+    items.forEach(function (item) {
+        if (item.querySelector(".item-name").textContent === todoItem.title) {
+            // complete event listener
+            item
+                .querySelector(".complete-item")
+                .addEventListener("click", function () {
+                    item.querySelector(".item-name").classList.toggle("completed");
+                    this.classList.toggle("visibility");
+                });
+            // edit event listener
+            item.querySelector(".edit-item").addEventListener("click", () => {
+                // console.log(project);
+                LocalStorage.delEdTodo(project, todoItem.title);
+                // console.log(project, todoItem.title);
+                LocalStorage.deleteTodo(project, todoItem.title);
+                itemList.removeChild(item);
+                const formTodoContainer = document.querySelector(".new-todo-form-container");
+                formTodoContainer.classList.remove("hidden");
+                formTodoContainer.classList.add("show");
+                document.querySelector("#todo-title").value = todoItem.title;
+                document.querySelector("#todo-description").value = todoItem.description;
+                document.querySelector("#prio-select").value = todoItem.priority;
+                document.querySelector("#todo-due-date").value = todoItem.dueDate;
+                // showFeedback("item modified", "success");
+
+            });
+            // delete event listener
+            item.querySelector(".delete-item").addEventListener("click", function () {
+                itemList.removeChild(item);
+                LocalStorage.delEdTodo(project, todoItem.title);
+                LocalStorage.deleteTodo(project, todoItem.title);
+                showFeedback("item deleted", "success");
+
+            });
+        }
+    });
+}
+
+function showFeedback(text, action) {
+    feedback.classList.add("showItem", `alert-${action}`);
+    feedback.innerHTML = `<p>${text}</p>`;
+
+    setTimeout(function () {
+        feedback.classList.remove("showItem", `alert-${action}`);
+    }, 3000);
+}
+
+
+
+function renderProjectName(name) {
+    const projectName = document.querySelector("#project-name-heading");
+    projectName.innerHTML = name;
+}
+
+window.addEventListener('load', LocalStorage.renderSample);
+window.console.log(LocalStorage.getProjects())
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    // ... handle error ...
+    this.console.log(msg);
+
+    return false;
+}
