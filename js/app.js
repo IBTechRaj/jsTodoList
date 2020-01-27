@@ -32,24 +32,35 @@ class LocalStorage {
 
         project.toDoItems.forEach(function (todo_item, index) {
             if (todo_item.title === dtitle) {
-                console.log(todo_item.title + ": " + dtitle);
+                // console.log(todo_item.title + ": " + dtitle);
                 project.toDoItems.splice(index, 1);
             }
         });
+    }
+    static delProj(dtitle) {
+        const projs = LocalStorage.getProjects();
+
+        projs.forEach(function (proj, index) {
+            if (proj.ptitle === dtitle) {
+                console.log(proj.ptitle + ":del " + dtitle);
+                projs.splice(index, 1);
+            }
+        });
+        localStorage.setItem('projs', JSON.stringify(projs));
     }
 
     static deleteTodo(project, dtitle) {
         const projs = LocalStorage.getProjects();
 
         projs.forEach(function (proj) {
-            console.log(dtitle + " " + project.ptitle);
-            console.log(proj);
+            // console.log(dtitle + " " + project.ptitle);
+            // console.log(proj);
 
 
             if (proj.ptitle === project.ptitle)
                 proj.toDoItems.forEach(function (todo_item, index) {
                     if (todo_item.title === dtitle) {
-                        console.log(todo_item.title + ": " + dtitle);
+                        // console.log(todo_item.title + ": " + dtitle);
                         proj.toDoItems.splice(index, 1);
                     }
                 });
@@ -65,8 +76,8 @@ class LocalStorage {
         if (projs.length === 0) {
             let defaultProject = project("Sample");
             projects.push(defaultProject);
-            defaultProject.toDoItems.push(toDoItem("Buy Milk", "Buy Milk from store", "Urgent", "16/5/2020"));
-            defaultProject.toDoItems.push(toDoItem("Buy Cheese slices", "Buy Cheese from hotel", "Ordinary", "16/5/2019"));
+            defaultProject.toDoItems.push(toDoItem("Recharge", "Recharge mobile online", "Urgent", "16/2/2020"));
+            defaultProject.toDoItems.push(toDoItem("Submit project", "Submit Js project in time", "Ordinary", "26/2/2020"));
 
             LocalStorage.addProject(defaultProject);
             renderToDoList(defaultProject, defaultProject.toDoItems);
@@ -76,7 +87,7 @@ class LocalStorage {
         projects = [];
         const prs = LocalStorage.getProjects();
         prs.forEach(function (pr) {
-            console.log(pr);
+            // console.log(pr);
             projects.push(pr);
         });
         renderProjectsList();
@@ -92,7 +103,7 @@ const itemList = document.querySelector(".item-list");
 const feedback = document.querySelector(".feedback");
 
 let projects = LocalStorage.getProjects() || [];
-console.log(projects);
+// console.log(projects);
 const project = (ptitle) => {
     let toDoItems = [];
     return { ptitle, toDoItems };
@@ -173,6 +184,37 @@ function renderToDoList(project, toDoItems) {
 
 /********************* Event Listeners **************/
 
+const deleteProject = document.getElementById("proj-del-btn");
+deleteProject.addEventListener("click", (e) => {
+    let selectedProjectElement = document.querySelector(".selected");
+    if (selectedProjectElement) {
+        let project = projects[selectedProjectElement.id - 1];
+        console.log(project);
+        console.log("in ev lsn" + project.ptitle);
+        LocalStorage.delProj(project.ptitle);
+
+        const projectList = document.querySelector("#project-list");
+        projectList.removeChild(projectList.childNodes[selectedProjectElement.id - 1]);
+        projects = [];
+        const prs = LocalStorage.getProjects();
+        prs.forEach(function (pr) {
+            // console.log(pr);
+            projects.push(pr);
+        });
+        showFeedback("Project deleted", "success");
+        renderProjectsList();
+        addEventListenerToProjectItem();
+
+        e.preventDefault();
+    }
+
+
+});
+
+// function delProj() {
+//     console.log("delete?");
+// }
+
 const addNewProjectBtn = document.querySelector("#new-project-btn");
 
 addNewProjectBtn.addEventListener("click", () => {
@@ -242,13 +284,13 @@ newTodoForm.addEventListener("submit", (e) => {
     const todoPriority = em.options[em.selectedIndex].text;
 
     let selectedProjectElement = document.querySelector(".selected");
-    console.log(selectedProjectElement)
+    // console.log(selectedProjectElement)
 
     if (selectedProjectElement) {
         let project = projects[selectedProjectElement.id - 1];
-        console.log(project)
+        // console.log(project)
         project.toDoItems.push(toDoItem(todoTitle, todoDescription, todoPriority, todoDueDate));
-        console.log(project.toDoItems);
+        // console.log(project.toDoItems);
         LocalStorage.addTodo(project);
         renderToDoList(project, project.toDoItems);
     }
