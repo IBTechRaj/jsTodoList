@@ -79,7 +79,10 @@ class LocalStorage {
         renderProjectsList();
         addEventListenerToProjectItem();
         renderProjectName(prs[0].ptitle);
+
         renderToDoList(prs[0], prs[0].toDoItems);
+
+        // prs[0].classList.add("selected");
     }
     static renderSample() {
 
@@ -151,6 +154,8 @@ function getProjectsList(projects) {
         projectItem.style.padding = "20px";
         projectItem.style.marginBottom = "10px";
         projectList.appendChild(projectItem);
+        if (projects[i].ptitle === 'Sample')
+            projectItem.setAttribute('class', 'selected');
     }
 
     return projectList;
