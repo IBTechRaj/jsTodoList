@@ -69,8 +69,19 @@ class LocalStorage {
         localStorage.setItem('projs', JSON.stringify(projs));
     }
 
+    static initializeApp() {
+        projects = [];
+        const prs = LocalStorage.getProjects();
+        prs.forEach(function (pr) {
+            // console.log(pr);
+            projects.push(pr);
+        });
+        renderProjectsList();
+        addEventListenerToProjectItem();
+        renderProjectName(prs[0].ptitle);
+        renderToDoList(prs[0], prs[0].toDoItems);
+    }
     static renderSample() {
-
 
         const projs = LocalStorage.getProjects();
         if (projs.length === 0) {
@@ -83,17 +94,17 @@ class LocalStorage {
             renderToDoList(defaultProject, defaultProject.toDoItems);
         }
 
-
-        projects = [];
-        const prs = LocalStorage.getProjects();
-        prs.forEach(function (pr) {
-            // console.log(pr);
-            projects.push(pr);
-        });
-        renderProjectsList();
-        addEventListenerToProjectItem();
-        renderProjectName(prs[0].ptitle);
-        renderToDoList(prs[0], prs[0].toDoItems);
+        LocalStorage.initializeApp();
+        // projects = [];
+        // const prs = LocalStorage.getProjects();
+        // prs.forEach(function (pr) {
+        //     // console.log(pr);
+        //     projects.push(pr);
+        // });
+        // renderProjectsList();
+        // addEventListenerToProjectItem();
+        // renderProjectName(prs[0].ptitle);
+        // renderToDoList(prs[0], prs[0].toDoItems);
     }
 
 }
@@ -202,9 +213,9 @@ deleteProject.addEventListener("click", (e) => {
             projects.push(pr);
         });
         showFeedback("Project deleted", "success");
-        renderProjectsList();
-        addEventListenerToProjectItem();
-
+        // renderProjectsList();
+        // addEventListenerToProjectItem();
+        LocalStorage.initializeApp();
         e.preventDefault();
     }
 
