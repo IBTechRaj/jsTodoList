@@ -380,6 +380,5 @@ window.console.log(LocalStorage.getProjects())
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     // ... handle error ...
     this.console.log(msg);
-
     return false;
 }
