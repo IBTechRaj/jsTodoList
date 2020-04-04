@@ -162,6 +162,56 @@ function getProjectsList(projects) {
 }
 
 
+function renderToDoList1(project, toDoItems) {
+    const toDoList = document.querySelector(".item-list");
+
+    if (toDoList.children.length > 0) {
+        while (toDoList.children.length !== 0) {
+            toDoList.removeChild(toDoList.lastChild);
+        }
+    }
+//const row = document.createElement('tr');
+
+        // row.innerHTML = `
+        // <td>${book.title}</td>
+        // <td>${book.author}</td>
+        // <td>${book.isbn}</td>
+        // <td>${book.pages}</td>
+        // <td>${book.read}</td>
+        // <td><a href="#" class="delete">X</a></td>
+        
+        // `;
+        // list.appendChild(row);
+
+    if (toDoItems.length > 0) {
+        
+        for (let i = 0; i < toDoItems.length; i++) {
+            itemList.style.width = "800px";
+const row = document.createElement('tr');
+            row.insertAdjacentHTML(
+                "beforeend",
+                `<div class="item my-3">
+                
+      <td>${toDoItems[i].title}</td> 
+      <td>${toDoItems[i].description}</td>
+     <td>${toDoItems[i].priority}</td> 
+      
+     <td>${toDoItems[i].dueDate}</td>
+    
+      
+      <div class="item-icons">
+       <a href="#" class="complete-item mx-2 item-icon"><i class="far fa-check-circle"></i></a>
+       <a href="#" class="edit-item mx-2 item-icon"><i class="far fa-edit"></i></a>
+       <a href="#" class="delete-item item-icon"  data-toggle="tooltip" title="Delete item"><i class="far fa-times-circle" ></i></a>
+      </div>
+     </div>`
+            );
+itemList.appendChild(row);
+            handleItem(toDoItems[i], project);
+        }
+    }
+}
+
 function renderToDoList(project, toDoItems) {
     const toDoList = document.querySelector(".item-list");
 
@@ -177,11 +227,11 @@ function renderToDoList(project, toDoItems) {
                 "beforeend",
                 `<div class="item my-3">
                 
-      <h5 class="item-name text-capitalize style = "width: 300px; color: red">${toDoItems[i].title}</h5>
-      <h5 class="item-name text-capitalize">${toDoItems[i].description}</h5>
-     <h5 class="item-name text-capitalize">${toDoItems[i].priority}</h5> 
+      <h5 class="item-name text-capitalize" >${toDoItems[i].title}</h5> 
+      <h5 class="item-desc text-capitalize">${toDoItems[i].description}</h5>
+     <h5 class="item-prio text-capitalize">${toDoItems[i].priority}</h5> 
       
-      <h5 class="item-name text-capitalize">${toDoItems[i].dueDate}</h5>
+      <h5 class="item-ddate text-capitalize">${toDoItems[i].dueDate}</h5>
     
       
       <div class="item-icons">

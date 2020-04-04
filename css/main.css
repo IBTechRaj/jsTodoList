@@ -140,17 +140,7 @@ textarea {
   right: -10px;
 }
 
-#new-project-btn {
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-#new-todo-btn {
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  float: right;
-}
+
 .hidden {
   display: none;
 }
@@ -229,6 +219,18 @@ border: 1px solid red;
 .item-icon {
   font-size: 1.2rem;
   cursor: pointer;
+}
+.item-name {
+width: 100px;
+}
+.item-desc {
+width: 150px;
+}
+.item-prio {
+width: 80px;
+}
+.item-ddate {
+width: 120px;
 }
 .complete-item {
   color: var(--mainGreen);
@@ -339,3 +341,26 @@ border: 1px solid red;
       .form-container .btn:hover, .open-button:hover {
       opacity: 1;
       }
+
+#proj-del-btn {
+  /* width: 60px;
+  height: 60px; */
+  color: var(--mainRed);
+}
+#new-todo-btn {
+  color: darkturquoise;
+float: right;
+}
+#new-project-btn {
+
+  /* border-style: solid;
+  border-color: black;
+  border-width: 2px; */
+  color: blue;
+}
+/* #new-todo-btn {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  float: right;
+} */
