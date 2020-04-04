@@ -432,3 +432,19 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     this.console.log(msg);
     return false;
 }
+
+const newProjectCancelBtn = document.querySelector("#project-cancel-btn");
+
+newProjectCancelBtn.addEventListener("click", () => {
+    const formContainer = document.querySelector(".new-project-form-container");
+    formContainer.classList.remove("show");
+    formContainer.classList.add("hidden");
+});
+
+const newTodoCancelBtn = document.querySelector("#todo-cancel-btn");
+
+newTodoCancelBtn.addEventListener("click", () => {
+    const formContainer = document.querySelector(".new-todo-form-container");
+    formContainer.classList.remove("show");
+    formContainer.classList.add("hidden");
+});
