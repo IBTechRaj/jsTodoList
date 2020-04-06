@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- main css -->
+    <!-- reset css -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <title>To Do List</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container"> -->
+    <!-- <div id="left-section"> -->
+    <div class="project-list-container">
+        <h1>Projects</h1>
+        <!-- <button id="new-project-btn"><img src="img/add-proj.png" width="50" height="50" alt="add new project"></button> -->
+        <a href="#"><i class="far fa-plus-square fa-2x"  alt="add new To Do" data-toggle="tooltip" title="Add new project" id="new-project-btn"></i></a>
+        <ul id="project-list"></ul>
+
+    </div>
+
+    <!-- </div> -->
+    <!-- <div id="right-section"> -->
+
+    <div class="todo-items-container">
+        <div class="alert text-capitalize feedback">
+            write value for item
+        </div>
+
+        <div class="clearfix">
+            <h1 id="project-name-heading"></h1>
+            <!-- <button id="proj-del-btn"><img src="img/delete.png" width="50" height="50" alt="Delete project"></button>
+            <button id="new-todo-btn"><img src="img/add-todo.png" width="50" height="50" alt="add new To Do"></button> -->
+
+            <!-- <button id="proj-del-btn"></button> -->
+            <a href="#"><i class="far fa-trash-alt fa-2x" alt="Delete project"  data-toggle="tooltip" title="Delete project"id="proj-del-btn"></i></a>
+            <!-- <button id="new-todo-btn"></button> -->
+            <a href="#"><i class="far fa-plus-square fa-2x"  alt="add new To Do"  data-toggle="tooltip" title="Add new item"id="new-todo-btn"></i></a>
+        </div>
+
+        <ul id="todo-list"></ul>
+
+
+        <div class="item-list my-5">
+
+            <div class="item my-3">
+                <h5 class="item-name text-capitalize"></h5>
+                <div class="item-icons">
+                    <a href="#" class="complete-item mx-2 item-icon"  data-toggle="tooltip" title="Mark/Unmark Complete"><i class="far fa-check-circle"></i></a>
+                    <a href="#" class="edit-item mx-2 item-icon" data-toggle="tooltip" title="Edit item"><i class="far fa-edit"></i></a>
+                    <a href="#" class="delete-item item-icon" data-toggle="tooltip" title="Delete item"><i class="far fa-times-circle" ></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="new-project-form-container hidden">
+        <form id="new-project-form">
+            <div id="project-cancel-btn"></div>
+            <label for="project-name">Add New Project</label>
+            <input type="text" id="project-name" placeholder="Enter Project Name">
+
+            <input type="submit" value="Add Project" style="background-color: #6e98e0">
+        </form>
+    </div>
+
+    <div class="new-todo-form-container hidden">
+
+        <form id="new-todo-form">
+            <div id="todo-cancel-btn"></div>
+            <label>Add New To-Do Item</label>
+            <input type="text" id="todo-title" placeholder="Enter Title">
+            <textarea name="" id="todo-description" placeholder="Enter Description"></textarea>
+            <select id="prio-select" class="proj-form-prio">
+                <option selected>Urgent</option>
+                <option>Ordinary</option>
+            </select>
+            <input id="todo-due-date" onfocus="(this.type='date')" onblur="(this.type='text')"
+                placeholder="Enter Due Date">
+            <input type="submit" id="updToDo" value="Add To Do" style="background-color: #A4CB67">
+        </form>
+    </div>
+    <!-- script js -->
+<!-- <script data-main="scripts/main.js" src="scripts/require.js"></script> -->
+    <!-- <script type="text/javascript" src="date-en-US.js"></script> -->
+<script src="main.js"></script>
+
+</body>
+
+</html>
