@@ -1,4 +1,4 @@
-# Weather App
+# Todo List
 
 This App creates a list of projects and a list of ToDos in each project. It also provides edit and delete options.
 
