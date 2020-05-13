@@ -1,17 +1,16 @@
 # Weather App
 
-This App retrieves weather data using weather API and displays the weather information of any major city, depending on the user's choice.
+This App creates a list of projects and a list of ToDos in each project. It also provides edit and delete options.
 
 # Technologies
 
 -HTML/CSS/Javascript
 -Webpack
--Promises
 
 # Setup
 To run the project:
 
-Clone the repository: https://github.com/IBTechRaj/rajWeatherApp
+Clone the repository: https://github.com/IBTechRaj/rajTodoList
 Run npm install. It will install all the dependencies required by the project
 Run npm start to start the development server. It will automatically open the page in your default browser.
 
