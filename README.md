@@ -28,11 +28,11 @@ You can view the live demo of this project [here](https://ibtechraj.github.io/ra
 
 # Screen Shots
 
-[screen shot 1](/images/Todo1.png)
+![screen shot 1](/images/Todo1.png)
 
-[screen shot 2](/images/Todo2.png)
+![screen shot 2](/images/Todo2.png)
 
-[screen shot 3](/images/Todo3.png)
+![screen shot 3](/images/Todo3.png)
 
 # Contribute
 
