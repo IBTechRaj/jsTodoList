@@ -46,6 +46,6 @@ Feel free to contribute if you want to make it better.
 * [Twitter](https://twitter.com/IBTechRaj) 
 
 # Licence
-This project is [MIT](https://github.com/IBTechRaj/rajTodoList/blob/master/LICENSE) licencsed.
+This project is [MIT](https://github.com/IBTechRaj/rajTodoList/blob/gh-pages/LICENSE) licencsed.
 
 
