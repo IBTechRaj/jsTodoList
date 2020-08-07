@@ -39,15 +39,8 @@ You can view the live demo of this project [here](https://ibtechraj.github.io/ra
 Feel free to contribute if you want to make it better.
 
 # Author
-
-- [Rajasekhar K ](https://github.com/IBTechRaj)
-
-Github: https://github.com/IBTechRaj
-
-- Email : krs30018@gmail.com
-- raj_shk@rediffmail.com
-
-# Follow Me
-
-- [LinkedIn](https://www.linkedin.com/in/rajkatakamsetty/)
-- [Twitter](https://twitter.com/IBTechRaj)
+* [Rajasekhar K ](https://ibtechraj.github.io/RajPortfolio/)
+* Github : https://github.com/IBTechRaj
+* Email : krs30018@gmail.com
+* [LinkedIn](https://www.linkedin.com/in/rajkatakamsetty/)
+* [Twitter](https://twitter.com/IBTechRaj) 
