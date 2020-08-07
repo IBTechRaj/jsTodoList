@@ -44,3 +44,8 @@ Feel free to contribute if you want to make it better.
 * Email : krs30018@gmail.com
 * [LinkedIn](https://www.linkedin.com/in/rajkatakamsetty/)
 * [Twitter](https://twitter.com/IBTechRaj) 
+
+# Licence
+This project is [MIT](https://github.com/IBTechRaj/rajTodoList/blob/master/LICENSE) licencsed.
+
+
