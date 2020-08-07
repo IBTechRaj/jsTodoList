@@ -11,8 +11,8 @@ This App creates a list of projects and a list of ToDos in each project. It also
 
 # Technologies
 
--HTML/CSS/Javascript
--Webpack
+- HTML/CSS/Javascript
+- Webpack
 
 # Setup
 
